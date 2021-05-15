@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [],
+    "declaration": true,
+    "outDir": "./lib",
+    "noEmitOnError": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+
+    /* Additional Checks */
+
+    /* Module Resolution Options */
+    "esModuleInterop": true,
+
+    /* Source Map Options */
+
+    /* Experimental Options */
+
+    /* Advanced Options */
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+  },
+
+  "include": ["src/*"]
+}
