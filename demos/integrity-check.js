@@ -16,9 +16,9 @@ const fs = require('fs')
     .filter((key) => !(key.startsWith('.') || key.startsWith('/')))
     .map(getMayPkgName)
 
-  const description = require(path.join(__dirname, '../package.json'))
+  const description = require(path.join(__dirname, '../package.json'));
   const notFoundDeps = deps.filter((dep) => {
-    return !!(
+    return !(
       (description.dependencies || {})[dep] ||
       (description.peerDependencies || {})[dep]
     )
