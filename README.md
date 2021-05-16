@@ -9,7 +9,7 @@ Use [glob](https://github.com/isaacs/node-glob) for entry generate,
 ## Usage
 ```javascript
 const path = require('path');
-const { resolveDependenciesArray } = require('resolve-dep');
+const { resolveDependenciesArray } = require('resolve-deps');
 const deps = await resolveDependenciesArray({
   entry: [path.join(__dirname, 'entry.ts')],
   resolve: {

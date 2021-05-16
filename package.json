@@ -1,12 +1,17 @@
 {
-  "name": "resolve-dep",
+  "name": "resolve-deps",
   "version": "1.0.0",
   "main": "./lib/index.js",
-  "repository": "git@github.com:youngBrain1893/resolve-dep.git",
+  "repository": "git@github.com:youngBrain1893/resolve-deps.git",
   "author": "youngBrain1893 <youngBrain1893@gmail.com>",
   "license": "MIT",
-  "keywords": ["resolve-dependencies"],
+  "keywords": [
+    "resolve-dependencies"
+  ],
   "description": "resolve dependencies for files or glob",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "build": "rm -rf lib && tsc"
   },
