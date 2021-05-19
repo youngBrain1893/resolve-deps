@@ -7,6 +7,10 @@ Use [glob](https://github.com/isaacs/node-glob) for entry generate,
 
 
 ## Usage
+```bash
+yarn add resolve-deps
+```
+
 ```javascript
 const path = require('path');
 const { resolveDependenciesArray } = require('resolve-deps');
