@@ -5,7 +5,7 @@ import Context from './context'
 import type { IResolveDepConfig, IResolvedModule } from '../types'
 import {
   generateIgnoredResolvedModule,
-  satisfiedExtensions,
+  validateImportPath,
   parseModuleDepsToArray,
 } from '../utils'
 import { getFiles } from './config'
@@ -36,7 +36,7 @@ async function resolveDep(ctx: Context, filename: string) {
 
   const extensionIgnore: string[] = []
   curResult = curResult.filter((dep) =>
-    satisfiedExtensions(dep, config.resolve?.extensions || [])
+    validateImportPath(dep, { extensions: config.resolve?.extensions || [] })
   )
 
   if (config.resolve?.recursion !== false) {
