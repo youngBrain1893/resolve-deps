@@ -24,14 +24,14 @@ class Context {
       this._resolver = ResolverFactory.createResolver({
         extensions: config.resolve?.extensions || [],
         fileSystem: graceFulFs as any,
-        alias: config.resolve?.alias || {},
+        alias: config.resolve?.alias || {}
       })
     }
     return this._resolver
   }
 
   resolve(dep: string, from: string): Promise<string> {
-    return new Promise<string>((res, rej) => {
+    return new Promise<string>((resolve, reject) => {
       this.getResolver().resolve(
         {},
         path.dirname(from),
@@ -39,10 +39,10 @@ class Context {
         {},
         (err, filePath) => {
           if (err) {
-            rej(err)
+            reject(err)
             throw err
           }
-          res(filePath as string)
+          resolve(filePath as string)
         }
       )
     })

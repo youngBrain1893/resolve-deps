@@ -6,11 +6,11 @@ import type { IResolveDepConfig, IResolvedModule } from '../types'
 import {
   generateIgnoredResolvedModule,
   validateImportPath,
-  parseModuleDepsToArray,
+  parseModuleDepsToArray
 } from '../utils'
 import { getFiles } from './config'
 
-async function resolveAbsolutePath(
+async function resolveAbsolutePath (
   ctx: Context,
   deps: string | string[],
   from: string
@@ -23,7 +23,7 @@ async function resolveAbsolutePath(
   return Promise.all(depArr.map((dep) => ctx.resolve(dep, from)))
 }
 
-async function resolveDep(ctx: Context, filename: string) {
+async function resolveDep (ctx: Context, filename: string) {
   if (ctx.moduleMap.has(filename)) return ctx.moduleMap.get(filename)!
 
   ctx.resolvingSet.add(filename)
@@ -31,7 +31,7 @@ async function resolveDep(ctx: Context, filename: string) {
 
   const { config } = ctx
   let curResult: string[] = precinct.paperwork(filename, {
-    includeCore: false,
+    includeCore: false
   })
 
   const extensionIgnore: string[] = []
@@ -58,7 +58,7 @@ async function resolveDep(ctx: Context, filename: string) {
       )
     }
 
-    let recursionDepAbsPaths = await resolveAbsolutePath(
+    const recursionDepAbsPaths = await resolveAbsolutePath(
       ctx,
       recursionDeps,
       filename
@@ -84,13 +84,13 @@ async function resolveDep(ctx: Context, filename: string) {
     )
   }
 
-  ctx.moduleMap.set(filename, result);
+  ctx.moduleMap.set(filename, result)
   ctx.resolvingSet.delete(filename)
 
   return result
 }
 
-export async function resolveDependencies(config: IResolveDepConfig) {
+export async function resolveDependencies (config: IResolveDepConfig) {
   const ctx = new Context(config)
   const files = getFiles(config.entry)
 
@@ -101,7 +101,7 @@ export async function resolveDependencies(config: IResolveDepConfig) {
   return ctx.moduleMap
 }
 
-export async function resolveDependenciesArray(config: IResolveDepConfig) {
+export async function resolveDependenciesArray (config: IResolveDepConfig) {
   const moduleMap = await resolveDependencies(config)
   return parseModuleDepsToArray(moduleMap)
 }
