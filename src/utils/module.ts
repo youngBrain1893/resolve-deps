@@ -6,16 +6,16 @@ export const generateIgnoredResolvedModule = (
   return dependencies.map((dependence) => ({
     name: dependence,
     deps: [],
-    ignore: true,
+    ignore: true
   }))
 }
 
 export const parseModuleDepsToArray = (depMap: Map<string, IResolvedModule>): string[] => {
-  const resultSet = new Set<string>();
+  const resultSet = new Set<string>()
   Array.from(depMap.values()).forEach(({ name, deps }) => {
-    resultSet.add(name);
-    deps.forEach(({ name }) => resultSet.add(name));
+    resultSet.add(name)
+    deps.forEach(({ name }) => resultSet.add(name))
   })
 
-  return Array.from(resultSet);
+  return Array.from(resultSet)
 }
