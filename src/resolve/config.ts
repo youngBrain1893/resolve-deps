@@ -2,7 +2,7 @@ import { IEntry, IEntryGlob } from '../types'
 import glob from 'glob'
 import path from 'path'
 
-function isGlobEntryConfig (entry: IEntry): entry is IEntryGlob {
+function isGlobEntryConfig(entry: IEntry): entry is IEntryGlob {
   return !!(entry as IEntryGlob)?.dir
 }
 

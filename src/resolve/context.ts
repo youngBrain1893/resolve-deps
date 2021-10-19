@@ -11,14 +11,14 @@ class Context {
   moduleMap: ResolvedModuleMap
   resolvingSet: Set<string>
 
-  constructor (config: IResolveDepConfig, moduleMap?: ResolvedModuleMap) {
+  constructor(config: IResolveDepConfig, moduleMap?: ResolvedModuleMap) {
     this.config = config
     this._resolver = null
     this.moduleMap = moduleMap || new Map()
     this.resolvingSet = new Set()
   }
 
-  getResolver (): Resolver {
+  getResolver(): Resolver {
     const { config } = this
     if (!this._resolver) {
       this._resolver = ResolverFactory.createResolver({
@@ -30,7 +30,7 @@ class Context {
     return this._resolver
   }
 
-  resolve (dep: string, from: string): Promise<string> {
+  resolve(dep: string, from: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       this.getResolver().resolve(
         {},

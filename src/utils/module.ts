@@ -10,7 +10,9 @@ export const generateIgnoredResolvedModule = (
   }))
 }
 
-export const parseModuleDepsToArray = (depMap: Map<string, IResolvedModule>): string[] => {
+export const parseModuleDepsToArray = (
+  depMap: Map<string, IResolvedModule>
+): string[] => {
   const resultSet = new Set<string>()
   Array.from(depMap.values()).forEach(({ name, deps }) => {
     resultSet.add(name)
